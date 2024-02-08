@@ -24,8 +24,8 @@ export const ContentList = (props: ContentListProps) => {
 		fallbackItemImage,
 		viewMoreText = "Read More"
 	} = props;
-	const urlPreFixes = contentType === "Blog" ? '/blog' : '/project';
-console.log(viewMoreText)
+	const urlPreFixes = contentType === "Blog" ? '/blog' : '/projects';
+	console.log(viewMoreText)
 	useEffect(() => {
 		let ctx = gsap.context(() => {
 			itemsRef.current.forEach(item => {
@@ -123,10 +123,10 @@ console.log(viewMoreText)
 				{[...items].map((item, index) => (
 					<>
 						{isFilled.keyText(item.data.title) && (
-							<li key={index} className='list-item opacity-0f ' onMouseEnter={() => onMouseEnter(index)} onMouseLeave={onMouseLeave} ref={(el) => (itemsRef.current[index] = el)}>
+							<li key={index} className='list-item opacity-0' onMouseEnter={() => onMouseEnter(index)} onMouseLeave={onMouseLeave} ref={(el) => (itemsRef.current[index] = el)}>
 								<Link href={urlPreFixes + '/' + item.uid} className='flex flex-col justify-between border-t border-t-slate-100 py-10 text-slate-200 md:flex-row'
 										aria-label={item.data.title}>
-									<div className='flex flex-col'>
+									<div className='flex-col flex'>
 										<span className='text-3xl font-bold'>{item.data.title}</span>
 										<div className='flex gap-3 text-yellow-400 text-lg font-bold'>
 											{item.tags.map((tag, index) => (
